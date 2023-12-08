@@ -24,13 +24,13 @@
     }
   ],
   "support": {
-    "source": "https://github.com/uky-web/test_project_template"
+    "source": "https://github.com/uky-web/project_template"
   },
   "require": {
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6.5",
     "oomphinc/composer-installers-extender": "^2.0",
-    "uky-web/uky_base": "^3.99.3",
+    "uky-web/uky_base": "^3.0.5",
     "vlucas/phpdotenv": "^4.0",
     "webflo/drupal-finder": "^1.0.0",
     "zaporylie/composer-drupal-optimizations": "^1.0"
