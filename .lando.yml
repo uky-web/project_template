@@ -1,0 +1,58 @@
+name: project-template
+recipe: drupal8
+excludes:
+  - drush/contrib/
+  - vendor/
+  - web/core/
+  - web/modules/contrib/
+  - web/themes/contrib/
+  - web/profiles/contrib/
+  - web/modules/custom/
+  - web/themes/custom/
+  - web/profiles/custom/
+  - web/libraries/
+config:
+  webroot: web
+  composer_version: '2.1.3'
+  xdebug: true
+  config:
+    php: .lando/config/php.ini
+
+services:
+  appserver:
+    build_as_root:
+      - curl -sL https://deb.nodesource.com/setup_14.x | bash -
+      - apt install -y nodejs
+    xdebug: true
+    config:
+      php: .lando/config/php.ini
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=appserver"
+        DRUPAL_ENV: "lando"
+
+tooling:
+  site-install:
+    service: appserver
+    description: Runs composer install and drush site-install
+    cmd:
+      - composer install
+      - drush site-install -y
+      - drush user:password admin "admin"
+      - echo "User 'admin'; password 'admin'"
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for apache.
+    cmd: "docker-php-ext-enable xdebug && /etc/init.d/apache2 reload"
+    user: root
+    xdebug-off:
+      service: appserver
+      description: Disable xdebug for apache.
+      cmd: "rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload"
+      user: root
+  events:
+    pre-drush:
+      - appserver: rm -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload
+    post-drush:
+      - appserver: docker-php-ext-enable xdebug && /etc/init.d/apache2 reload
+

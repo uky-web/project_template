@@ -1,0 +1,36 @@
+######
+# package:      The namespace and name of the composer package you want to add
+# git:          The URL of the git repo of the package
+# branch:       The branch to check out
+# composername: The name of the package for composer. For branch-like names composer
+#               looks for a 'dev-' prefix ( e.g. 'dev-main') For tag/version-like  
+#               names, composer looks for a '-dev' suffix (e.g.'2.0.x-dev').
+#               See https://getcomposer.org/doc/articles/versions.md#branches           
+# version:      The version composer should alias this version as (helpful for resolving indirect dependencies)
+######
+packages:
+  -
+    package: "uky-web/ukd8"
+    git: "https://github.com/uky-web/uky_base_theme.git"
+    branch: "3.0.x"
+    composername: "3.0.x-dev"
+    version: 3.0.0
+  -
+    package: "uky-web/uky_base"
+    git: "https://github.com/uky-web/uky_base.git"
+    branch: "3.0.x"
+    composername: "3.0.x-dev"
+    version: 3.0.0
+  -
+    package: "uky-web/ukd8_customizations"
+    git: "https://github.com/uky-web/uky_customizations.git"
+    branch: "3.0.x"
+    composername: "3.0.x-dev"
+    version: 3.0.0
+
+  -
+    package: "uky-web/uky_platform_dev_tools"
+    git: "https://github.com/uky-web/uky_platform_dev_tools.git"
+    branch: "3.0.x"
+    composername: "3.0.x-dev"
+    version: 3.0.0
