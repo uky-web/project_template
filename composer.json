@@ -30,7 +30,7 @@
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6.5",
     "oomphinc/composer-installers-extender": "^2.0",
-    "uky-web/uky_base": "^3.0.10",
+    "uky-web/uky_base": "^v3.0.11",
     "vlucas/phpdotenv": "^4.0",
     "webflo/drupal-finder": "^1.0.0",
     "zaporylie/composer-drupal-optimizations": "^1.0"
@@ -95,9 +95,7 @@
       "gitignore": false,
       "file-mapping": {
         "[web-root]/.env-example": false,
-        "[web-root]/sites/default/default.settings.php": {
-          "append": "assets/dev.settings.inc"
-        }
+        "[web-root]/sites/default/default.settings.php": false
       }
     },
     "installer-types": [
