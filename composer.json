@@ -3,6 +3,7 @@
   "description": "Project template for UK Drupal 8 projects with composer",
   "type": "project",
   "license": "MIT",
+  "version":"3.1.3",
   "authors": [
     {
       "name": "University of Kentucky Webcom",
