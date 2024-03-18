@@ -3,7 +3,7 @@
   "description": "Project template for UK Drupal 8 projects with composer",
   "type": "project",
   "license": "MIT",
-  "version": "3.1.6",
+  "version": "3.2.0",
   "authors": [
     {
       "name": "University of Kentucky Webcom",
@@ -31,7 +31,7 @@
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6.5",
     "oomphinc/composer-installers-extender": "^2.0",
-    "uky-web/uky_base": "^3.1.6",
+    "uky-web/uky_base": "^3.2.0",
     "vlucas/phpdotenv": "^4.0",
     "webflo/drupal-finder": "^1.0.0",
     "zaporylie/composer-drupal-optimizations": "^1.0"
@@ -75,12 +75,10 @@
     ],
     "post-install-cmd": [
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-      "cd web/themes/custom/ukd8 && npm install",
       "@dev-tools-permissions-fix"
     ],
     "post-update-cmd": [
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-      "cd web/themes/custom/ukd8 && npm install",
       "@dev-tools-permissions-fix"
     ]
   },
