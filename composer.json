@@ -3,7 +3,7 @@
   "description": "Project template for UK Drupal 8 projects with composer",
   "type": "project",
   "license": "MIT",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "authors": [
     {
       "name": "University of Kentucky Webcom",
@@ -34,7 +34,7 @@
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6.5",
     "oomphinc/composer-installers-extender": "^2.0",
-    "uky-web/uky_base": "^3.3.0",
+    "uky-web/uky_base": "^3.3.1",
     "vlucas/phpdotenv": "^4.0",
     "webflo/drupal-finder": "^1.0.0",
     "zaporylie/composer-drupal-optimizations": "^1.0"
