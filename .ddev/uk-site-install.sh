@@ -7,7 +7,7 @@ if [ -f "reference/sanitized.sql.gz" ]
     echo "Reference database found. Importing..."
     # Unzip the reference DB
     gunzip reference/sanitized.sql.gz
-    ddev import-db --src=reference/sanitized.sql
+    ddev import-db --file=reference/sanitized.sql
     # gzip the reference DB
     gzip reference/sanitized.sql
     # discard changes to gzip reference DB
@@ -37,6 +37,7 @@ if [ -f "reference/sanitized.sql.gz" ]
     ddev drush cr
     ddev drush user:create admin --password="admin"
     ddev drush urol "administrator" admin
+    ddev drush php-eval 'node_access_rebuild();'
   else
     echo "No reference database found. Running site-install..."
      ddev drush si -y --account-pass=admin --site-name='ddev_gitpod' uky_base

@@ -7,7 +7,7 @@
  * comment is removed.  It is recommended that you leave this file alone.
  */
 
-$host = "ddev-ddev-gitpod-db";
+$host = "db";
 $port = 3306;
 
 // If DDEV_PHP_VERSION is not set but IS_DDEV_PROJECT *is*, it means we're running (drush) on the host,

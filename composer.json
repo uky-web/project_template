@@ -3,7 +3,7 @@
   "description": "Project template for UK Drupal 8 projects with composer",
   "type": "project",
   "license": "MIT",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "authors": [
     {
       "name": "University of Kentucky Webcom",
@@ -27,11 +27,14 @@
   "support": {
     "source": "https://github.com/uky-web/project_template"
   },
+  "require-dev": {
+    "uky-web/uky_platform_dev_tools": "^3.0.0"
+  },
   "require": {
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6.5",
     "oomphinc/composer-installers-extender": "^2.0",
-    "uky-web/uky_base": "^3.2.2",
+    "uky-web/uky_base": "^3.3.0",
     "vlucas/phpdotenv": "^4.0",
     "webflo/drupal-finder": "^1.0.0",
     "zaporylie/composer-drupal-optimizations": "^1.0"
@@ -80,6 +83,10 @@
     "post-update-cmd": [
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
       "@dev-tools-permissions-fix"
+    ],
+    "dev-tools-permissions-fix": [
+      "chmod 755 .ddev/run-phpstorm.sh",
+      "chmod 755 .ddev/uk-site-install.sh"
     ]
   },
   "extra": {
@@ -96,6 +103,9 @@
       "locations": {
         "web-root": "web/"
       },
+      "allowed-packages": [
+        "uky-web/uky_platform_dev_tools"
+      ],
       "gitignore": false,
       "file-mapping": {
         "[web-root]/.env-example": false,
@@ -107,7 +117,10 @@
       "bower-asset",
       "drupal-custom-profile",
       "drupal-custom-module",
-      "drupal-custom-theme"
+      "drupal-custom-theme",
+      "uky-web-module",
+      "uky-web-profile",
+      "uky-web-theme"
     ],
     "installer-paths": {
       "web/core": [
@@ -138,6 +151,15 @@
         "type:drupal-library",
         "type:npm-asset",
         "type:bower-asset"
+      ],
+      "web/modules/uky_platform/{$name}": [
+        "type:uky-web-module"
+      ],
+      "web/profiles/uky_platform/{$name}": [
+        "type:uky-web-profile"
+      ],
+      "web/themes/uky_platform/{$name}": [
+        "type:uky-web-theme"
       ]
     }
   }
