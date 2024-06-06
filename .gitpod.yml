@@ -1,4 +1,4 @@
-image: drud/ddev-gitpod-base:latest
+image: ddev/ddev-gitpod-base:20240516
 
 tasks:
   - name: ddev-gitpod-launcher
@@ -15,7 +15,7 @@ tasks:
       .ddev/uk-site-install.sh
     command: |
       ddev start -y
-      gp await-port 8080 && gp preview $(gp url 8080)
+      gp ports await 8080 && gp preview $(gp url 8080)
 
 # VScode xdebug extension
 vscode:
