@@ -56,8 +56,8 @@ $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml'
 /**
  * Disable CSS and JS aggregation.
  */
-$config['system.performance']['css']['preprocess'] = TRUE;
-$config['system.performance']['js']['preprocess'] = TRUE;
+// $config['system.performance']['css']['preprocess'] = TRUE;
+// $config['system.performance']['js']['preprocess'] = TRUE;
 
 /**
  * Disable the render cache.
