@@ -54,7 +54,3 @@ html
 ##
 ### Custom site specific gitignore
 ### _______________________________________________________________________________
-
-.ddev/config.yaml
-.ddev/docker-compose.override.yaml
-.lando
