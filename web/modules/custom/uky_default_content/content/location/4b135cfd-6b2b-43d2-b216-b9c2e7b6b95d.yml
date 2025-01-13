@@ -1,0 +1,21 @@
+_meta:
+  version: '1.0'
+  entity_type: location
+  uuid: 4b135cfd-6b2b-43d2-b216-b9c2e7b6b95d
+  bundle: linked_location
+  default_langcode: en
+default:
+  title:
+    -
+      value: 'Default Content Test'
+  status:
+    -
+      value: true
+  field_address:
+    -
+      value: 'Default Content Test'
+  field_link:
+    -
+      uri: 'https://google.com'
+      title: ''
+      options: {  }

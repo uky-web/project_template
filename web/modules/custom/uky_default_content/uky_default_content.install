@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Install file for UKY Default Content module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function uky_default_content_install() {
+  \Drupal::messenger()->addMessage('UKY Default Content module installed.');
+}

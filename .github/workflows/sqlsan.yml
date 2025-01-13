@@ -1,0 +1,29 @@
+name: Developer - Sanitized database and Config Export from env-webcom
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: [self-hosted, sqlsan-runner]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Extract repo prefix
+      id: extract_name
+      run: |
+        # Extract everything after the '/' and before ".uky.edu" or ".uky.dev"
+        PREFIX=$(echo "${{ github.repository }}" | sed 's/.*\/\([^\/]*\)\.uky\.\(edu\|dev\)/\1/')
+        echo "REPO_PREFIX=$PREFIX" >> $GITHUB_ENV
+
+    - name: Set username
+      run: echo "USER_NAME=${{ github.actor }}" >> $GITHUB_ENV
+
+    - name: Run Sanitized database and config export script
+      run: |
+        /var/www/scripts/call_remote_sqlsan.sh
+      env:
+        DIRECTORY_NAME: ${{ env.REPO_PREFIX }}
+        USER_NAME: ${{ env.USER_NAME }}

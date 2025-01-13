@@ -1,0 +1,155 @@
+id: uky_faker_persons
+label: 'Generate test persons.'
+migration_group: testing
+
+dependencies:
+  enforced:
+    module:
+      - uky_test_data
+
+source:
+  plugin: csv
+  path: 'modules/custom/uky_test_data/data/dummy.csv'
+  ids: [ id ]
+  header_offset: 0
+  fields:
+    0:
+      name: id
+      label: 'ID'
+
+process:
+  field_name/title:
+    -
+      plugin: select_title
+
+  field_name/generational:
+    -
+      plugin: select_generational
+
+  field_categories:
+    -
+      plugin: generate_people_category     
+
+  field_name/given:
+    -
+      plugin: faker
+      generator: words
+      args:
+        - 1
+      faker_locale: 'en_US'
+    -
+      plugin: concat
+      delimiter: ' '
+    -
+      plugin: callback
+      callable: ucwords
+
+  field_job_title:
+    -
+      plugin: faker
+      generator: words
+      args:
+        - 2
+      faker_locale: 'en_US'
+    -
+      plugin: concat
+      delimiter: ' '
+    -
+      plugin: callback
+      callable: ucwords
+
+  field_name/middle:
+    -
+      plugin: faker
+      generator: words
+      args:
+        - 1
+      faker_locale: 'en_US'
+    -
+      plugin: concat
+      delimiter: ' '
+    -
+      plugin: callback
+      callable: ucwords
+  field_name/family:
+    -
+      plugin: faker
+      generator: words
+      args:
+        - 1
+      faker_locale: 'en_US'
+    -
+      plugin: concat
+      delimiter: ' '
+    -
+      plugin: callback
+      callable: ucwords   
+  field_name/credentials:
+    -
+      plugin: faker
+      generator: words
+      args:
+        - 1
+      faker_locale: 'en_US'
+    -
+      plugin: concat
+      delimiter: ' '
+    -
+      plugin: callback
+      callable: ucwords
+
+  field_large_image:
+    plugin: generate_media
+
+  body/value:
+    -
+      plugin: faker
+      generator: words
+      args:
+        - 20
+      faker_locale: 'en_US'
+    -
+      plugin: concat
+      delimiter: ' '
+    -
+      plugin: callback
+      callable: ucwords  
+
+  field_preferred_name:
+    -
+      plugin: faker
+      generator: words
+      args:
+        - 2
+      faker_locale: 'en_US'
+    -
+      plugin: concat
+      delimiter: ' '
+    -
+      plugin: callback
+      callable: ucwords
+  field_email:
+    -
+      plugin: faker
+      generator: email
+
+  field_phone:
+    -
+      plugin: generate_phone_number
+  
+  field_media:
+    plugin: generate_media
+
+  field_location_text:
+    -
+      plugin: faker
+      generator: address
+
+  field_paragraphs:
+    plugin: generate_paragraph     
+    
+      
+    
+destination:
+  plugin: 'entity:node'
+  default_bundle: person
