@@ -34,7 +34,10 @@
     "composer/installers": "^1.2",
     "cweagans/composer-patches": "^1.6.5",
     "oomphinc/composer-installers-extender": "^2.0",
-    "uky-web/uky_base": "^3.7.1",
+    "uky-web/limestone": "3.6.6",
+    "uky-web/ukd8": "3.7.1",
+    "uky-web/ukd8_customizations": "3.7.1",
+    "uky-web/uky_base": "3.7.1",
     "vlucas/phpdotenv": "^4.0",
     "webflo/drupal-finder": "^1.0.0",
     "zaporylie/composer-drupal-optimizations": "^1.0"

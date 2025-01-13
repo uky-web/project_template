@@ -1,0 +1,35 @@
+name: project-template
+recipe: drupal10
+config:
+  php: '8.3'
+  webroot: web
+  composer_version: 2-latest
+  via: apache:2.4
+  database: mysql:5.7
+  xdebug: true
+  config:
+    php: .lando/config/php.ini
+
+services:
+  appserver:
+    xdebug: true
+    config:
+      php: .lando/config/php.ini
+    overrides:
+      environment:
+        PHP_IDE_CONFIG: "serverName=appserver"
+        DRUPAL_ENV: "lando"
+
+tooling:
+  site-install:
+    service: appserver
+    description: Runs composer install and drush site-install
+    cmd: /app/.lando/scripts/lando-install.sh
+  app-update:
+    service: appserver
+    description: Updates outdated Drupal core and installed modules
+    dir: /app
+    cmd:
+      - composer update "drupal/*" drush/drush -W
+      - drush updatedb
+      - drush cr

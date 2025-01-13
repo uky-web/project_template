@@ -7,7 +7,7 @@ if [ -f "reference/sanitized.sql.gz" ]
     echo "Reference database found. Importing..."
     # Unzip the reference DB
     gunzip reference/sanitized.sql.gz
-    ddev import-db --file=reference/sanitized.sql
+    ddev import-db --src=reference/sanitized.sql
     # gzip the reference DB
     gzip reference/sanitized.sql
     # discard changes to gzip reference DB
