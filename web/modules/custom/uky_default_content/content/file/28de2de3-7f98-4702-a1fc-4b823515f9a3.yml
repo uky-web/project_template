@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 28de2de3-7f98-4702-a1fc-4b823515f9a3
+  default_langcode: en
+default:
+  filename:
+    -
+      value: 67633fe9c5d97.jpg
+  uri:
+    -
+      value: 'public://67633fe9c5d97.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 7192
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1734557669

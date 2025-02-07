@@ -1,0 +1,9 @@
+name: 'UKY Custom Migration'
+type: module
+description: 'Custom migration processes for UKY.'
+package: Custom
+core_version_requirement: ^10
+dependencies:
+  - migrate:migrate
+  - migrate:migrate_plus
+  - migrate_source_csv:migrate_source_csv

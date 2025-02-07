@@ -7,7 +7,10 @@ parameters:
   twig.config:
     debug: true
     auto_reload: true
-    cache: false
+    cache: false  # Disable Twig caching for development
+  cache.render: false  # Disable render caching
+  cache.entity: false  # Disable entity caching
+
 services:
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory
