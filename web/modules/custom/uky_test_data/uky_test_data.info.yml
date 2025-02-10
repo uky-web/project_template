@@ -1,9 +1,0 @@
-name: 'UK Test Data Migration'
-type: module
-description: 'Migration rules for UK test data.'
-package: Migration
-core_version_requirement: ^10
-dependencies:
-  - migrate:migrate
-  - migrate:migrate_plus
-  - migrate_source_csv:migrate_source_csv
