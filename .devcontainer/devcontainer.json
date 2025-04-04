@@ -1,7 +1,6 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:1": {},
     "ghcr.io/ddev/ddev/install-ddev:latest": {}
   },
   "portsAttributes": {
@@ -21,7 +20,25 @@
       "label": "web https"
     }
   },
-  "postCreateCommand": "bash -c 'ddev config global --omit-containers=ddev-router && ddev config --auto && ddev debug download-images'",
-  "postCreateCommand": "ddev start -y",
-  "postStartCommand": "ddev composer global config allow-plugins true && ddev composer config allow-plugins.composer/installers true && ddev composer config allow-plugins.drupal/core-composer-scaffold true && ddev composer config allow-plugins.cweagans/composer-patches true && ddev composer config allow-plugins.zaporylie/composer-drupal-optimizations true && ddev composer config allow-plugins.drupal/console-extend-plugin true && ddev composer config allow-plugins.oomphinc/composer-installers-extender true && ddev composer install && .ddev/uk-site-install.sh"
+  "postCreateCommand": "bash .devcontainer/setup_project.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Stanislav.vscode-drupal",
+        "andrewdavidblum.drupal-smart-snippets",
+        "wongjn.php-sniffer",
+        "felixfbecker.php-debug",
+        "bmewburn.vscode-intelephense-client",
+        "mblode.twig-language-2"
+      ],
+      "settings": {
+        "editor.tabSize": 4,
+        "editor.wordWrap": "on",
+        "editor.formatOnSave": true,
+        "editor.minimap.enabled": false,
+        "files.trimTrailingWhitespace": true,
+        "workbench.colorTheme": "Default Dark+"
+      }
+    }
+  }
 }
