@@ -1,17 +1,15 @@
 #!/bin/bash
 set -e
 
+PROJECT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )/.." &> /dev/null && pwd )
+DB_DIR="${PROJECT_DIR}/reference"
+DB_NAME="sanitized.sql.gz"
+CONFIG_DIR="${PROJECT_DIR}/config/sync"
+
 # Import the reference DB
-if [ -f "reference/sanitized.sql.gz" ]
-  then
+if [ -f "${DB_DIR}/${DB_NAME}" ]; then
     echo "Reference database found. Importing..."
-    # Unzip the reference DB
-    gunzip reference/sanitized.sql.gz
-    ddev import-db --file=reference/sanitized.sql
-    # gzip the reference DB
-    gzip reference/sanitized.sql
-    # discard changes to gzip reference DB
-    git checkout reference/sanitized.sql.gz
+    ddev import-db --file="${DB_DIR}/${DB_NAME}"
     if ! [ -f "web/sites/default/settings.php" ]
       then
         echo "Generating settings.php file..."
@@ -25,6 +23,7 @@ if [ -f "reference/sanitized.sql.gz" ]
     ddev drush en stage_file_proxy
     ddev drush cex -y
     mv config/stage_file_proxy.settings.yml config/sync/
+    cp "${PROJECT_DIR}"/.ddev/ldap_servers.server.ukad.yml "${CONFIG_DIR}"
     ddev drush cr
     ddev drush cim -y
     file="reference/.siteurl"
@@ -46,4 +45,5 @@ if [ -f "reference/sanitized.sql.gz" ]
     echo "No reference database found. Running site-install..."
      ddev drush si -y --account-pass=admin --site-name='uky_base' uky_base
      ddev drush php-eval 'node_access_rebuild();'
+     ddev drush cex -y
 fi
