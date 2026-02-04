@@ -1,2 +1,0 @@
-hooks:
-    init: echo 'inited yo'
