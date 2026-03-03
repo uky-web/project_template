@@ -124,3 +124,5 @@ if (version_compare(DRUPAL::VERSION, "9.0.0", '>=') &&
   $settings['config_sync_directory'] = '../config/sync';
 }
 
+// This specifies the config split for ddev environments
+$config['config_split.config_split.ddev']['status'] = TRUE;

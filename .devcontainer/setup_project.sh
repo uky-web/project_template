@@ -34,7 +34,7 @@ ddev composer config allow-plugins.drupal/console-extend-plugin true
 ddev composer config allow-plugins.oomphinc/composer-installers-extender true
 
 # Install dependencies
-ddev composer install
+ddev composer update
 
 # Run additional setup script
 .ddev/uk-site-install.sh
