@@ -15,20 +15,17 @@
 /web/themes/uky_platform/
 /web/profiles/uky_platform/
 
-# These are temporary and will be removed after the next platform release.
-/web/modules/custom/ukd8_customizations
-/web/modules/custom/limestone
-/web/themes/custom/ukd8
-/web/profiles/custom/uky_base
-
 # Ignore sensitive information
 /web/sites/*/settings.php
 /web/sites/*/settings.local.php
 config/sync/ldap_servers.server.ukad.yml
 /.env
 
-# Ignore Drupal's file directory
+# Ignore Drupal's files directory
 /web/sites/*/files/
+
+# Ignore Drupal's private files directory
+/private
 
 # Ignore Stage File Proxy config file since it is only needed for gitpod.
 /config/sync/stage_file_proxy.settings.yml
